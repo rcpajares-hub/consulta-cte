@@ -1,0 +1,23 @@
+{
+  "name": "consulta-cte",
+  "version": "1.0.0",
+  "description": "Buscador y consultor de los documentos oficiales del Código Técnico de la Edificación (CTE) con citas y respuestas gráficas",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "descargar": "node scripts/download.js",
+    "indexar": "node scripts/ingest.js",
+    "preparar": "node scripts/download.js && node scripts/ingest.js",
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node scripts/comprobar.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "minisearch": "^7.2.0",
+    "pdfjs-dist": "^6.4.299"
+  }
+}

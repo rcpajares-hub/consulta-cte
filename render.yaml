@@ -1,0 +1,28 @@
+# Configuración para Render (https://render.com): New → Blueprint → elegir este repositorio.
+services:
+  - type: web
+    name: consulta-cte
+    runtime: node
+    plan: free
+    region: frankfurt # servidores en la UE
+    # Descarga los PDF oficiales de codigotecnico.org y genera el índice de búsqueda.
+    buildCommand: npm ci && npm run preparar
+    startCommand: npm start
+    healthCheckPath: /api/estado
+    autoDeploy: true
+    envVars:
+      - key: HOST
+        value: 0.0.0.0 # Render necesita que el servidor escuche en todas las interfaces
+      - key: CTE_PROXY
+        value: "1" # Render añade un salto de proxy: así el límite de búsquedas usa la IP real
+      # Datos del titular para /aviso-legal y /privacidad: Render los pedirá al crear el servicio.
+      - key: CTE_TITULAR
+        sync: false
+      - key: CTE_NIF
+        sync: false
+      - key: CTE_DOMICILIO
+        sync: false
+      - key: CTE_EMAIL
+        sync: false
+      - key: CTE_ALOJAMIENTO
+        value: Render Services, Inc.

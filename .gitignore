@@ -1,0 +1,6 @@
+node_modules/
+.env
+# Se regeneran con: npm run preparar
+data/pdf/
+data/corpus.json
+.claude/
