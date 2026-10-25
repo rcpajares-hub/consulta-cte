@@ -12,27 +12,6 @@ Web para que técnicos y arquitectos busquen y consulten los **Documentos Básic
 - **Explorador de documentos** con el índice de cada DB para abrir cualquier apartado.
 - Diseño adaptable a móvil y modo claro/oscuro.
 
-## Puesta en marcha
-
-Requisitos: Node.js 20.12 o superior.
-
-```bash
-npm install
-npm run preparar   # descarga los PDF oficiales (~20 MB) y genera data/corpus.json
-npm start          # http://localhost:3000
-```
-
-## Publicar en Render
-
-El repositorio incluye `render.yaml`, con el servicio ya configurado: plan gratuito, región de Frankfurt, construcción `npm ci && npm run preparar`, arranque `npm start`, `HOST=0.0.0.0` y `CTE_PROXY=1`.
-
-1. Sube el proyecto a un repositorio de GitHub (puede ser privado).
-2. En [render.com](https://render.com), entra con tu cuenta de GitHub y elige **New → Blueprint**. Selecciona el repositorio.
-3. Render pedirá los datos del titular (`CTE_TITULAR`, `CTE_NIF`, `CTE_DOMICILIO`, `CTE_EMAIL`). Rellénalos y pulsa **Apply**.
-4. La primera construcción tarda unos minutos: descarga los PDF oficiales y genera el índice. Después la web queda en `https://<nombre>.onrender.com`.
-5. Cada `git push` a la rama `main` vuelve a desplegarla.
-
-En el plan gratuito el servicio se suspende tras unos 15 minutos sin visitas y la primera petición posterior tarda alrededor de un minuto. Los planes de pago lo mantienen siempre activo. Para AdSense, añade tu dominio en **Settings → Custom Domains**; Render emite el certificado HTTPS automáticamente.
 
 ## Seguridad
 
